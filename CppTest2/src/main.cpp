@@ -4,6 +4,9 @@
 
 int main()
 {
+    // Use length instead of size, size usually refers to space such as bytes.
+    //std::string test = "Test";
+    //int length = test.length();
     // ctrl rr to rename something
     Player bobulus = Player();
 
