@@ -1,9 +1,89 @@
 #include <iostream>
 // Only include header and not cpp file, the program will freak out.
-#include "PLayer.h"
+#include "Player.h"
+#include "Enemy.h"
 
+//class Enemy
+//{
+//public:
+//    Enemy(float hp = 5)
+//    {
+//        hp = health;
+//        std::cout << "Constructor called!" << std::endl;
+//    }
+//    
+//
+//    float health = 5;
+//};
+class Item
+{
+    
+};
+class Enemy
+{
+public:
+    Enemy() : m_healthPotion(new Item())
+    {
+        std::cout << "Enemy Constructor" << std::endl; 
+    }
+    // Initialize a destructor by putting "~" in front.
+    // Should only handle cleaning up memory
+    // If a class has no pointers it does not really need a destructor
+    ~Enemy() 
+    { 
+        delete m_healthPotion;
+        m_healthPotion = nullptr;
+        std::cout << "Enemy Destructor" << std::endl; 
+    }
+private:
+    
+    Item* m_healthPotion;
+};
+
+//class EnemyManager
+//{
+//public:
+//
+//    EnemyManager()
+//    {
+//        bob = Enemy();
+//    }
+//
+//    
+//    Enemy bob;
+//    float hp;
+//    int count;
+//};
 int main()
 {
+    Enemy bob = Enemy();
+
+    //std::cout << "Start" << std::endl;
+    //Enemy* bob = nullptr;
+    //bob = new Enemy();
+    //// Anytime you new something you must delete it.
+    //// If it is not called before you leave the scope then you cant call delete.
+    //// It then becomes wasted memory.
+    //delete bob;
+    //std::cout << "End" << std::endl;
+    
+    //// Same method.
+    //Enemy jake = Enemy(5);
+    //// Calls the other contructor and passes in 5 as hp.
+    //Enemy john(5);
+
+    //EnemyManager manager = EnemyManager();
+    //std::cout << manager.bob.health << std::endl;
+
+    /*Enemy* bob = new Enemy();
+    std::cout << bob->health << std::endl;
+    delete bob;*/
+    //Enemy bob = Enemy();
+
+    //std::cout << bob.health << std::endl;
+
+
+
     // Use length instead of size, size usually refers to space such as bytes.
     //std::string test = "Test";
     //int length = test.length();

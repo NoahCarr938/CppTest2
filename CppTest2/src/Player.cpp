@@ -3,35 +3,35 @@
 #include <iostream>
 
 // No return type for constructors
-Player::Player()
+// Initialize with the name and then the value.
+// Make sure the values are only called once.
+Player::Player() : m_xp(0)
 {
-	m_name = "Player";
+	// Dont need below code if we create an initialize list.
+	
+	// Giving defualt values to the variables in the constructor
+	/*m_name = "Player";
 	m_health = 100;
 	m_xp = 0; 
-	m_level = 1;
+	m_level = 1;*/
 }
 
-// No return type for destructors
-Player::~Player()
-{
-
-}
 
 // Standard practice to define functions in orders that you declared them
 void Player::TakeDamage(float damage)
 {
 	if (damage <= 0) return;
 
-	m_health -= damage;
-	if (m_health < 0)
-		m_health = 0;
+	SetHealth(GetHealth() - damage);
+	if (GetHealth() < 0)
+		SetHealth(0);
 }
 
 void Player::Heal(float health)
 {
 	if (health <= 0) return;
 
-	m_health += health;
+	SetHealth(GetHealth() + health);
 }
 
 void Player::AddXP(float amount)
@@ -42,14 +42,14 @@ void Player::AddXP(float amount)
 	while (m_xp >= 100)
 	{
 		m_xp -= 100;
-		m_level++;
+		SetLevel(GetLevel() + 1);
 	}
 }
 
 void Player::PrintStats()
 {
-	std::cout << "Name:   " << m_name << "\n";
-	std::cout << "Health: " << m_health << "\n";
+	std::cout << "Name:   " << GetName() << "\n";
+	std::cout << "Health: " << GetHealth() << "\n";
 	std::cout << "XP:     " << m_xp << "\n";
-	std::cout << "Level:  " << m_level << std::endl;
+	std::cout << "Level:  " << GetLevel() << std::endl;
 }
